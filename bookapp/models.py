@@ -18,7 +18,9 @@ class Books(models.Model):
   title = models.CharField(max_length=100)
   genre = models.CharField(max_length=200)
   price = models.IntegerField(null=True)
-  published_date = models.DateField()
+  content = models.JSONField(null=True)
+  published_date = models.DateField(auto_now_add=True)
+  updated_date = models.DateField(auto_now=True)
   author = models.ForeignKey('Author', on_delete=models.CASCADE, related_name='books', related_query_name='books')
   publisher = models.ForeignKey('Publisher', on_delete=models.CASCADE, related_name='books', related_query_name='books')
   def __str__(self):
